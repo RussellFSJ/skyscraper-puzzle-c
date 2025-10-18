@@ -12,7 +12,7 @@ int	ft_atoi(const char *str);
  * @param size Size of the 2D grid.
  * @return int 1 if valid, 0 otherwise. 
  */
-int	is_validate_input(char *input, int size)
+int	is_valid_input(char *input, int size)
 {
 	int index;
 	int count;
