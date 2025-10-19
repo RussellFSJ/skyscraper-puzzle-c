@@ -6,7 +6,7 @@
 /*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 09:58:44 by rfoo              #+#    #+#             */
-/*   Updated: 2025/10/19 11:49:54 by rfoo             ###   ########.fr       */
+/*   Updated: 2025/10/19 13:52:07 by rfoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char *argv[])
 	int	**solution;
 	int size; 
 
+	size = 4;
 	if (argc != 2)
 	{
 		write(1, "Error\n", 6);

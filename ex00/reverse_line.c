@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   count_visible.c                                    :+:      :+:    :+:   */
+/*   reverse_line.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/19 11:12:45 by rfoo              #+#    #+#             */
-/*   Updated: 2025/10/19 13:33:31 by rfoo             ###   ########.fr       */
+/*   Created: 2025/10/19 12:25:18 by rfoo              #+#    #+#             */
+/*   Updated: 2025/10/19 13:29:55 by rfoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @brief Counts the number of visible boxes from line orientation.
- * 
- * @param line Array of block values
- * @param size Number of rows or columns
- * @return int Number of visible boxes
- */
-int	count_visible(int *line, int size)
-{
-	int	index;
-	int	count;
-	int	max_value;
+#include <stdlib.h>
 
+/**
+ * @brief Creates a reversed row/column to check visibility.
+ * 
+ * Creates a reversed row or column to check visibility from 
+ * other orientation. 
+ * 
+ * @param line Original line (Left to Right or Top to Bottom )
+ * @param size Number of rows/columns
+ * @return int* Line of reversed orientation
+ */
+int	*reverse_line(int *line, int size)
+{
+	int	*rev;
+	int	index;
+
+	rev = malloc(size * sizeof(int));
 	index = 0;
-	count = 0;
-	max_value = 0;
 	while (index < size)
 	{
-		if (line[index] > max_value)
-		{
-			max_value = line[index];
-			count++;
-		}
+		rev[index] = line[size - 1 - index];
 		index++;
 	}
-	return (count);
+	return (rev);
 }
