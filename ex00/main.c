@@ -6,7 +6,7 @@
 /*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 09:58:44 by rfoo              #+#    #+#             */
-/*   Updated: 2025/10/19 20:35:02 by rfoo             ###   ########.fr       */
+/*   Updated: 2025/10/19 20:46:28 by rfoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,7 @@ int	main(int argc, char *argv[])
 	int	size;
 
 	size = 4;
-	if (argc != 2)
-	{
-		write(1, "Error\n", 6);
-		return (1);
-	}
-	if (!is_valid_input(argv[1], 4))
+	if (argc != 2 || !is_valid_input(argv[1], 4))
 	{
 		write(1, "Error\n", 6);
 		return (1);
@@ -40,7 +35,10 @@ int	main(int argc, char *argv[])
 	solution = allocate_grid(4);
 	parse_clues(argv[1], 4, clues);
 	solve(solution, 0, size, clues);
-	write_grid(solution, size);
+	if (solution[0][0] == 0)
+		write(1, "Error\n", 6);
+	else
+		write_grid(solution, size);
 	free_grid(clues, size);
 	free_grid(solution, size);
 	return (0);
