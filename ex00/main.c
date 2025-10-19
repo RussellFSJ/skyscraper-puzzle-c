@@ -6,12 +6,11 @@
 /*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 09:58:44 by rfoo              #+#    #+#             */
-/*   Updated: 2025/10/19 18:45:19 by yi-ltan          ###   ########.fr       */
+/*   Updated: 2025/10/19 19:20:30 by rfoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 int		is_valid_input(char *input, int size);
 int		**allocate_grid(int size);
@@ -40,8 +39,6 @@ int	main(int argc, char *argv[])
 	clues = allocate_grid(4);
 	solution = allocate_grid(4);
 	parse_clues(argv[1], 4, clues);
-	// write_grid(clues, 4);
-	//testing begins here
 	solve(solution, 0, size, clues);
 	write_grid(solution, size);
 	return (0);

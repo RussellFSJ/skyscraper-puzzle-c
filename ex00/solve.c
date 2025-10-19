@@ -6,7 +6,7 @@
 /*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 16:33:52 by yi-ltan           #+#    #+#             */
-/*   Updated: 2025/10/19 18:46:27 by yi-ltan          ###   ########.fr       */
+/*   Updated: 2025/10/19 19:20:37 by rfoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
  * @copyright Copyright (c) 2025
  * 
  */
-
-#include <stdio.h>
 
 int	check_no_repeats(int **grid, int size, int pointer, int value);
 int	validate_clues(int **grid, int **clues, int size);
