@@ -1,71 +1,98 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   validate_clues.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/19 12:23:43 by rfoo              #+#    #+#             */
-/*   Updated: 2025/10/19 14:48:09 by rfoo             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include <stdlib.h>
 
-int	count_visible(int *line, int size);
-int	*reverse_line(int *line, int size);
+int count_visible(int *line, int size);
+void reverse_line_copy(int *src, int *dest, int size);
 
-int	validate_clues(int **grid, int **clues, int size)
+int line_is_filled(int *line, int size)
 {
-	int	i;
-	int	j;
-	int *row;
-	int *rev;
-
-	i = 0;
-    while (i < size) {
-        j = 0;
-        while (j < size) {
-            row[j] = grid[i][j];
-            j++;
-        }
-        if (count_visible(row, size) != clues[2][i]) 
-			return (0);
-        j = 0;
-		rev = reverse_line(row, size);
-        while (j < 4) {
-            rev = row[size - 1 - j];
-            j++;
-        }
-        if (count_visible(rev, size) != clues[3][i]) 
-			return (0);
-        j = 0;
-        while (j < 4) {
-            row[j] = grid[j][i];
-            j++;
-        }
-        j = 0;
-        while (j < 4) {
-            rev[j] = row[4 - 1 - j];
-            j++;
-        }
-        if (count_visible(row, size) != clues[0][i]) 
-			return 0;
-        if (count_visible(rev, size) != clues[1][i])
-			return 0;
+    int i = 0;
+    while (i < size)
+    {
+        if (line[i] == 0)
+            return 0;
         i++;
     }
     return 1;
 }
 
-int	validate_clue(int *row, int clue, int size)
+void reverse_line(int *src, int *dest, int size)
 {
-	int	index;
-	
-	index = 0;
-	while (index < size)
-	{
-		if (count_visible(row, size) != clue)
-			return (0);
-		index++;
-	}
-	return (1);
+    int i = 0;
+    while (i < size)
+    {
+        dest[i] = src[size - 1 - i];
+        i++;
+    }
+}
+
+int validate_clues(int **grid, int **clues, int size)
+{
+    int i, j;
+    int *row = malloc(sizeof(int) * size);
+    int *rev = malloc(sizeof(int) * size);
+
+    if (!row || !rev)
+        return 0; // handle malloc failure
+
+    i = 0;
+    while (i < size)
+    {
+        // Check row from left to right
+        j = 0;
+        while (j < size)
+        {
+            row[j] = grid[i][j];
+            j++;
+        }
+
+        if (line_is_filled(row, size))
+        {
+            if (count_visible(row, size) != clues[2][i])
+            {
+                free(row);
+                free(rev);
+                return 0;
+            }
+
+            reverse_line(row, rev, size);
+            if (count_visible(rev, size) != clues[3][i])
+            {
+                free(row);
+                free(rev);
+                return 0;
+            }
+        }
+
+        // Check column from top to bottom
+        j = 0;
+        while (j < size)
+        {
+            row[j] = grid[j][i];
+            j++;
+        }
+
+        if (line_is_filled(row, size))
+        {
+            if (count_visible(row, size) != clues[0][i])
+            {
+                free(row);
+                free(rev);
+                return 0;
+            }
+
+            reverse_line(row, rev, size);
+            if (count_visible(rev, size) != clues[1][i])
+            {
+                free(row);
+                free(rev);
+                return 0;
+            }
+        }
+
+        i++;
+    }
+
+    free(row);
+    free(rev);
+    return 1;
 }

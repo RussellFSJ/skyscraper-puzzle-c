@@ -18,6 +18,7 @@ int		**allocate_grid(int size);
 void	free_grid(int **grid, int size);
 int		**parse_clues(const char *input, int size, int **grid);
 void	write_grid(int **grid, int size);
+int		solve(int **grid, int pos, int size, int **clues);
 
 int	main(int argc, char *argv[])
 {
@@ -39,6 +40,9 @@ int	main(int argc, char *argv[])
 	clues = allocate_grid(4);
 	solution = allocate_grid(4);
 	parse_clues(argv[1], 4, clues);
-	write_grid(clues, 4);
+	//write_grid(clues, 4);
+	//testing begins here
+	solve(solution, 0, size, clues);
+	write_grid(solution, size);
 	return (0);
 }

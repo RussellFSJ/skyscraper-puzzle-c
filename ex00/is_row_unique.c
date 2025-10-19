@@ -19,6 +19,7 @@
  * @param value Value at cell
  * @return int 1 if value at cell is unique in its row, 0 otherwise
  */
+
 int	is_row_unique(int **grid, int size, int row, int value)
 {
 	int	index;
