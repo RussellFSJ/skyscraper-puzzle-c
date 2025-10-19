@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   is_valid_input.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/19 09:58:41 by rfoo              #+#    #+#             */
+/*   Updated: 2025/10/19 10:07:00 by rfoo             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 int	ft_atoi(const char *str);
 
 /**
@@ -14,8 +26,8 @@ int	ft_atoi(const char *str);
  */
 int	is_valid_input(char *input, int size)
 {
-	int index;
-	int count;
+	int	index;
+	int	count;
 
 	index = 0;
 	count = 0;
@@ -24,14 +36,14 @@ int	is_valid_input(char *input, int size)
 		if (input[index] != ' ')
 		{
 			if (ft_atoi(&input[index]) == 0 || ft_atoi(&input[index]) > size)
-				return 0;
+				return (0);
 			count++;
 		}
 		index++;
 	}
 	if (count != size * size)
-		return 0;
-	return 1;
+		return (0);
+	return (1);
 }
 
 // #include <stdio.h>
