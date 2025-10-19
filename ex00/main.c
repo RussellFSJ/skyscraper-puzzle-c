@@ -6,7 +6,7 @@
 /*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 09:58:44 by rfoo              #+#    #+#             */
-/*   Updated: 2025/10/19 10:05:16 by rfoo             ###   ########.fr       */
+/*   Updated: 2025/10/19 11:49:54 by rfoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int argc, char *argv[])
 {
 	int	**clues;
 	int	**solution;
+	int size; 
 
 	if (argc != 2)
 	{

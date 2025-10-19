@@ -6,7 +6,7 @@
 /*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 09:58:41 by rfoo              #+#    #+#             */
-/*   Updated: 2025/10/19 10:07:00 by rfoo             ###   ########.fr       */
+/*   Updated: 2025/10/19 11:23:01 by rfoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	ft_atoi(const char *str);
  * - digit inputs that are greater than the size of the grid 
  * - less/more digit inputs than size x size
  * 
- * @param input String input from command line argument.
- * @param size Size of the 2D grid.
- * @return int 1 if valid, 0 otherwise. 
+ * @param input String input from command line argument
+ * @param size Size of the 2D grid
+ * @return int 1 if valid, 0 otherwise
  */
 int	is_valid_input(char *input, int size)
 {

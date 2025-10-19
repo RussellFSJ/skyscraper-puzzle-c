@@ -6,7 +6,7 @@
 /*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 09:58:47 by rfoo              #+#    #+#             */
-/*   Updated: 2025/10/19 10:23:10 by rfoo             ###   ########.fr       */
+/*   Updated: 2025/10/19 11:22:51 by rfoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	ft_atoi(const char *str);
  * row1left row2left row3left row4left 
  * row1right row2right row3right row4right"
  * 
- * @param input Validated input from command line argument.
- * @param size Number of rows and columns.
- * @param grid 2D grid of size x size.
- * @return int** 2D grid.
+ * @param input Validated input from command line argument
+ * @param size Number of rows and columns
+ * @param grid 2D grid of size x size
+ * @return int** 2D grid
  */
 int	**parse_clues(const char *input, int size, int **grid)
 {
