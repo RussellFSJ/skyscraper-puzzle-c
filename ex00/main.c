@@ -6,7 +6,7 @@
 /*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 09:58:44 by rfoo              #+#    #+#             */
-/*   Updated: 2025/10/19 13:52:07 by rfoo             ###   ########.fr       */
+/*   Updated: 2025/10/19 18:39:26 by rfoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char *argv[])
 	clues = allocate_grid(4);
 	solution = allocate_grid(4);
 	parse_clues(argv[1], 4, clues);
-	//write_grid(clues, 4);
+	// write_grid(clues, 4);
 	//testing begins here
 	solve(solution, 0, size, clues);
 	write_grid(solution, size);

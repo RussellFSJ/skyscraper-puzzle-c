@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yi-ltan <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 16:33:52 by yi-ltan           #+#    #+#             */
-/*   Updated: 2025/10/19 17:27:31 by yi-ltan          ###   ########.fr       */
+/*   Updated: 2025/10/19 18:29:36 by rfoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 #include <stdio.h>
 
-int	check_no_repeats(int **grid, int size, int row, int col);
+int	check_no_repeats(int **grid, int size, int pointer, int value);
 int	validate_clues(int **grid, int **clues, int size);
 
 int	solve(int **grid, int pos, int size, int **clues)
@@ -41,13 +41,16 @@ int	solve(int **grid, int pos, int size, int **clues)
 	while (digit <= size)
 	{
 		isunique = check_no_repeats(grid, size, pos, digit);
-		grid[row][col] = digit;
-		if (isunique && validate_clues(grid, clues, size))
+		if(isunique)
 		{
-			if (solve(grid, pos + 1, size, clues))
-				return (1);
+			grid[row][col] = digit;
+			if (validate_clues(grid, clues, size))
+			{
+				if (solve(grid, pos + 1, size, clues))
+					return (1);
+			}
+			grid[row][col] = 0;
 		}
-		grid[row][col] = 0;
 		digit ++;
 	}
 	return (0);

@@ -6,14 +6,18 @@
 /*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:23:43 by rfoo              #+#    #+#             */
-/*   Updated: 2025/10/19 17:58:22 by rfoo             ###   ########.fr       */
+/*   Updated: 2025/10/19 18:38:54 by rfoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 int		count_visible(int *line, int size);
 void	reverse_line(int *src, int *dest, int size);
 void	copy_row(int **grid, int row_index, int *dest, int size);
 void	copy_col(int **grid, int col_index, int *dest, int size);
+int 	is_line_complete(int *line, int size);
+
 
 int	validate_clues(int **grid, int **clues, int size)
 {
@@ -24,24 +28,34 @@ int	validate_clues(int **grid, int **clues, int size)
 
 	i = 0;
 	j = 0;
-	row = 0;
-	rev = 0;
+	row = (int *)malloc(size * sizeof(int));
+    rev = (int *)malloc(size * sizeof(int));
 	while (i < size)
 	{
 		copy_row(grid, i, row, size);
-		reverse_line(row, rev, size);
-		if (count_visible(row, size) != clues[2][i])
-			return (0);
-		if (count_visible(rev, size) != clues[3][i])
-			return (0);
+		if (is_line_complete(row, size))
+		{
+			reverse_line(row, rev, size);
+			if (count_visible(row, size) != clues[2][i])
+				return (0);
+			if (count_visible(rev, size) != clues[3][i])
+				return (0);
+		}
 		copy_col(grid, i, row, size);
-		reverse_line(row, rev, size);
-		if (count_visible(row, size) != clues[0][i])
-			return (0);
-		if (count_visible(rev, size) != clues[1][i])
-			return (0);
+		if (is_line_complete(row, size))
+		{
+
+			reverse_line(row, rev, size);
+			if (count_visible(row, size) != clues[0][i])
+				return (0);
+			if (count_visible(rev, size) != clues[1][i])
+				return (0);
+		}
 		i++;
 	}
+
+	free(row);
+	free(rev);
 	return (1);
 }
 
