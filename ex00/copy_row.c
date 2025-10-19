@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_line.c                                     :+:      :+:    :+:   */
+/*   copy_row.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/19 12:25:18 by rfoo              #+#    #+#             */
-/*   Updated: 2025/10/19 16:56:49 by rfoo             ###   ########.fr       */
+/*   Created: 2025/10/19 16:28:40 by rfoo              #+#    #+#             */
+/*   Updated: 2025/10/19 16:39:29 by rfoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @brief Reverses a line to check visibility.
- * 
- * Reverses a line to check visibility from 
- * other orientation. 
- * 
- * @param src Original line (Left to Right or Top to Bottom )
- * @param dest 
- * @param size Number of rows/columns
- */
-void	reverse_line(int *src, int *dest, int size)
+void	copy_row(int **grid, int row_index, int *dest, int size)
 {
 	int	j;
 
 	j = 0;
 	while (j < size)
 	{
-		dest[j] = src[size - 1 - j];
+		dest[j] = grid[row_index][j];
 		j++;
 	}
 }
