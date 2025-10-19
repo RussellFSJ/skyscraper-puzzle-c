@@ -6,7 +6,7 @@
 /*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 16:33:52 by yi-ltan           #+#    #+#             */
-/*   Updated: 2025/10/19 18:29:36 by rfoo             ###   ########.fr       */
+/*   Updated: 2025/10/19 18:46:27 by yi-ltan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	solve(int **grid, int pos, int size, int **clues)
 	int	digit;
 	int	row;
 	int	col;
-	int	isunique;
 
 	if (pos == size * size)
 		return (1);
@@ -40,8 +39,7 @@ int	solve(int **grid, int pos, int size, int **clues)
 	digit = 1;
 	while (digit <= size)
 	{
-		isunique = check_no_repeats(grid, size, pos, digit);
-		if(isunique)
+		if (check_no_repeats(grid, size, pos, digit))
 		{
 			grid[row][col] = digit;
 			if (validate_clues(grid, clues, size))

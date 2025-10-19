@@ -17,7 +17,7 @@
  * @param size Number of rows or columns
  * @return int Number of visible boxes
  */
-int	count_visible(int *line, int size)
+int	count_vis(int *line, int size)
 {
 	int	index;
 	int	count;
